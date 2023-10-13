@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand fw-semibold" routerLink="/">E-Agenda
+      <i class="bi bi-clipboard2-check-fill text-primary ms-2"></i>
+    </a>
+    <button (click)="estaColapsada = !estaColapsada"
+      class="navbar-toggler"
+      type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" [ngbCollapse]="estaColapsada == true">
+      <div class="links w-100 text-center">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-primary"
+               routerLinkActive="fw-semibold"
+               routerLink="/contatos/listar">Contatos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary"
+               routerLinkActive="fw-semibold"
+               routerLink="/compromissos/listar">Compromissos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary"
+               routerLinkActive="fw-semibold"
+               routerLink="/categorias/listar">Categorias</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary"
+               routerLinkActive="fw-semibold"
+               routerLink="/despesas/listar">Despesas</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

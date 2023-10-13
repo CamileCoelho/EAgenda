@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <!-- Conteúdo principal -->
+    <div class="col-12 col-md-10 col-lg-11 mx-auto mt-5">
+      <!-- Titulo -->
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">Listar Contatos</h1>
+        <hr />
+      </div>
+
+      <!-- Barra de Ações -->
+      <div class="d-grid d-md-flex gap-1 mt-5">
+        <a
+          [routerLink]="['/contatos/inserir']"
+          role="button"
+          class="btn btn-primary me-md-1"
+        >
+          <i class="pi pi-plus-circle me-2"></i>
+          Novo Contato
+        </a>
+      </div>
+
+      <!-- Listagem de Registros -->
+      <div class="row mt-3 g-2">
+        <div class="col-12 col-md-6 col-lg-4" *ngFor="let contato of contatos">
+          <app-card-contato [contato]="contato"></app-card-contato>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

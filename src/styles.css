@@ -1,1 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+.ngx-toastr {
+  margin: 5px 0 !important;
+  margin-right: 5px !important;
+}

@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    
+    <div class="col-12 col-md-10 col-lg-9 mx-auto my-5">
+      
+      <div class="text-md-start">
+        <div class="text-md-start">
+          <h1 class="fw-bold text-primary">Excluir Despesa</h1>
+          <hr />
+        </div>
+
+        <h2 class="fs-5">
+          Tem certeza que deseja excluir a despesa
+          <span class="fw-bolder fst-italic">"{{ despesaVM?.descricao }}" </span>?</h2>
+      </div>
+
+      <dl class="form-group mt-4 row">
+        <dt class="col-md-4">
+          <label class="control-label">Descrição:</label>
+        </dt>
+        <dd class="col-md-8">{{ despesaVM?.descricao }}</dd>
+
+        <dt class="col-md-4">
+          <label class="control-label">Data:</label>
+        </dt>
+        <dd class="col-md-8">{{ despesaVM?.data | date }}</dd>
+
+        <dt class="col-md-4">
+          <label class="control-label">Forma de Pagamento:</label>
+        </dt>
+        <dd class="col-md-8">{{ despesaVM?.formaPagamento }}</dd>
+
+        <dt class="col-md-4">
+          <label class="control-label">Valor:</label>
+        </dt>
+        <dd class="col-md-8">{{ despesaVM?.valor }}</dd>
+      </dl>
+
+      <div class="card-footer g-grid d-flex gap-1 mt-5">
+        <button (click)="gravar()" type="button" class="btn btn-danger px-5">
+          <i class="bi bi-trash-fill me-2"></i>
+          Excluir
+        </button>
+        <button
+          routerLink="/despesas/listar"
+          type="button"
+          class="btn btn-outline-primary px-5">
+          <i class="bi bi-arrow-return-left me-2"></i>
+          Voltar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

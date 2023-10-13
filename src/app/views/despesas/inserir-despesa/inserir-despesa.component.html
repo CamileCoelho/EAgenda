@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5">
+
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">Inserir Nova Despesa</h1>
+      </div>
+
+      <form [formGroup]="form!" (ngSubmit)="gravar()" class="mt-4">
+        
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Descrição:</label>
+          <input
+            formControlName="descricao"
+            class="form-control"
+            type="text"
+            placeholder="Digite a descrição da despesa"/>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Data:</label>
+          <input
+            formControlName="data"
+            class="form-control"
+            type="date"
+            placeholder="Digite o link do compromisso"/>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Forma de Pagamento:</label>
+
+          <ng-select formControlName="formaPagamento" [clearable]="false">
+            <ng-option [value]="0">Pix</ng-option>
+            <ng-option [value]="1">Dinheiro</ng-option>
+            <ng-option [value]="2">Cartão de Cédito</ng-option>
+            <ng-option [value]="3">Cartão de Débito</ng-option>
+          </ng-select>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Valor:</label>
+          <input
+            formControlName="valor"
+            class="form-control w-50"
+            type="number"
+            placeholder="Digite o valor da despesa"/>
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Categorias:</label>
+          <ng-select formControlName="categoriasSelecionadas" [multiple]="true">
+            <ng-option
+              *ngFor="let categoria of categorias"
+              [value]="categoria.id">{{ categoria.titulo }}</ng-option>
+          </ng-select>
+        </div>
+
+        <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <button type="submit" class="btn btn-primary px-5">
+            <i class="bi bi-save me-2"></i>Gravar</button>
+          <button routerLink="/despesas/listar"
+            type="button"
+            class="btn btn-outline-primary px-5">
+            <i class="pi pi-arrow-left me-2"></i>Voltar</button>
+        </div>
+
+      </form>
+    
+    </div>
+  </div>
+</div>
