@@ -12,18 +12,8 @@ import { ListarDespesasComponent } from './listar-despesas/listar-despesas.compo
 import { ExcluirDespesaComponent } from './excluir-despesa/excluir-despesa.component';
 
 @NgModule({
-  declarations: [
-    InserirDespesaComponent, 
-    ListarDespesasComponent, 
-    EditarDespesaComponent, 
-    ExcluirDespesaComponent],
-  imports: [
-    CommonModule,
-    DespesasRoutingModule,
-    ReactiveFormsModule,
-    NgSelectModule,
-    CategoriasModule,
-  ],
+  declarations: [InserirDespesaComponent, ListarDespesasComponent, EditarDespesaComponent, ExcluirDespesaComponent],
+  imports: [ CommonModule, DespesasRoutingModule, ReactiveFormsModule, NgSelectModule, CategoriasModule],
   providers: [DespesasService],
 })
 export class DespesasModule {}

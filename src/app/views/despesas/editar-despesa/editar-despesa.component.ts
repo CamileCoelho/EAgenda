@@ -33,9 +33,7 @@ export class EditarDespesaComponent {
         Validators.minLength(3),
       ]),
       valor: new FormControl(0, [Validators.required, Validators.min(0.1)]),
-      data: new FormControl(new Date().toString().substring(0, 10), [
-        Validators.required,
-      ]),
+      data: new FormControl(new Date().toString().substring(0, 10), [Validators.required]),
       formaPagamento: new FormControl(0, [Validators.required]),
       categoriasSelecionadas: new FormControl([], [Validators.required]),
     });
@@ -44,9 +42,7 @@ export class EditarDespesaComponent {
       .selecionarTodos()
       .subscribe((res) => (this.categorias = res));
 
-    const despesa = this.route.snapshot.data[
-      'despesa'
-    ] as FormsDespesaViewModel;
+    const despesa = this.route.snapshot.data['despesa'] as FormsDespesaViewModel;
 
     this.form.patchValue({
       ...despesa,

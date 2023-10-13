@@ -26,10 +26,7 @@ export class InserirDespesaComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      descricao: new FormControl('', [
-        Validators.required,
-        Validators.minLength(3),
-      ]),
+      descricao: new FormControl('', [ Validators.required, Validators.minLength(3) ]),
       valor: new FormControl(0, [Validators.required, Validators.min(0.1)]),
       data: new FormControl(new Date().toString().substring(0, 10), [Validators.required]),
       formaPagamento: new FormControl(0, [Validators.required]),

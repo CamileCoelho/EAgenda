@@ -1,10 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormsContatoViewModel } from '../models/forms-contato.view-model';
 import { ContatosService } from '../services/contatos.service';

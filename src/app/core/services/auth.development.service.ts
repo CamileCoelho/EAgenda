@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Injectable } from '@angular/core';
 import { APP_INITIALIZER } from '@angular/core';
-import { environment } from 'src/environments/environment';
+import { environment } from 'src/environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
