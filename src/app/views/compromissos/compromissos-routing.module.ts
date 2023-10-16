@@ -1,10 +1,5 @@
 import { NgModule, inject } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  ResolveFn,
-  RouterModule,
-  Routes,
-} from '@angular/router';
+import { ActivatedRouteSnapshot, ResolveFn, RouterModule, Routes } from '@angular/router';
 import { InserirCompromissoComponent } from './inserir-compromisso/inserir-compromisso.component';
 import { ListarCompromissosComponent } from './listar-compromissos/listar-compromissos.component';
 import { FormsCompromissoViewModel } from './models/forms-compromisso.view-model';
