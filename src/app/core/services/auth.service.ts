@@ -17,8 +17,8 @@ export class AuthInitializationService {
     const autorization = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJlNTI0NzcxNC0zZjdiLTRkMjAtYmUzMy03MGI2OWFkNDM3NjIiLCJlbWFpbCI6ImNhbWlsZWNvZWxobzIzQGdtYWlsLmNvbSIsImdpdmVuX25hbWUiOiJDYW1pbGUiLCJuYmYiOjE2OTcwNTIwMTUsImV4cCI6MTY5NzA4MDgxNSwiaWF0IjoxNjk3MDUyMDE1LCJpc3MiOiJlQWdlbmRhIiwiYXVkIjoiaHR0cDovL2xvY2FsaG9zdCJ9.GPc87R-R_R3qoxcsOvKj6AgSdE05ZRglsMKuhSNRtNU'; 
     
     const credentials = {
-      email: 'camilecoelho23@gmail.com',
-      senha: '123C@mile',
+      email: 'teste@teste.com',
+      senha: 'String@123',
     };
 
     const headers = {
