@@ -36,7 +36,6 @@ export class AuthInitializationService {
 
       if (sucesso && dados && dados.chave) {
         environment.apiKey = dados.chave;
-        //console.log('Autenticação bem-sucedida. Chave obtida:', dados.chave);
       } else {
         console.error('Falha na autenticação');
       }
@@ -50,29 +49,11 @@ export class AuthInitializationService {
   }
 }
 
-
-// async function obterChaveDeAutenticacao() {
-//   try {
-//     const response = await axios.post(authUrl, credentials, { headers });
-//     const { sucesso, dados } = response.data;
-
-//     if (sucesso && dados && dados.chave) {
-//       environment.apiKey = dados.chave;
-//     } else {
-//       console.error('Falha na autenticação');
-//     }
-//   } catch (error) {
-//     console.error('Erro na solicitação de autenticação:', error);
-//   }
-// }
-
-
-// Função de inicialização
 export function initializeApp(authService: AuthInitializationService) {
   return () => authService.initializeApp();
 }
 
-// A função initializeApp é a função de inicialização que será chamada quando a aplicação for inicializada.
+// função chamada quando inicializa a aplicação 
 export const AuthInitializerProvider = {
   provide: APP_INITIALIZER,
   useFactory: initializeApp,
