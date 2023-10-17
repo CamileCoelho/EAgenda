@@ -1,6 +1,6 @@
-import { NgModule, inject } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
-import { ActivatedRouteSnapshot, ResolveFn, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
@@ -35,6 +35,11 @@ const routes: Routes = [
     path: 'despesas',
     loadChildren: () =>
       import('./views/despesas/despesas.module').then((m) => m.DespesasModule),
+  },
+  {
+    path: 'tarefas',
+    loadChildren: () =>
+      import('./views/tarefas/tarefas.module').then((m) => m.TarefasModule),
   },
 ];
 

@@ -2,16 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { FormsCategoriaViewModel } from '../models/forms-categoria.view-model';
 import { Observable, map } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { ListarCategoriaViewModel } from '../models/listar-categoria.view-model';
 import { VisualizarCategoriaViewModel } from '../models/visualizar-categoria.view-model';
+import { LocalStorageService } from 'src/app/core/auth/services/local-storage.service';
 
 @Injectable()
 export class CategoriasService {
   private endpoint: string =
     'https://e-agenda-web-api.onrender.com/api/categorias/';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private localStorage: LocalStorageService) {}
 
   public inserir(
     categoria: FormsCategoriaViewModel
@@ -61,7 +61,7 @@ export class CategoriasService {
   }
 
   private obterHeadersAutorizacao() {
-    const token = environment.apiKey;
+    const token = this.localStorage.obterDadosLocaisSalvos()?.chave;
 
     return {
       headers: new HttpHeaders({

@@ -1,0 +1,139 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-6 mx-auto mt-5">
+      <div class="text-md-start">
+        <h1 class="fw-bold text-primary">Editar Tarefa</h1>
+      </div>
+
+      <form [formGroup]="formTarefa!" (ngSubmit)="gravar()" class="mt-4">
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Título:</label>
+          <input
+            [ngClass]="campoEstaInvalido('titulo') ? 'is-invalid' : ''"
+            formControlName="titulo"
+            class="form-control"
+            type="text"
+            placeholder="Digite o título da tarefa"
+          />
+        </div>
+
+        <div class="form-group mb-3 position-relative">
+          <label class="form-label">Prioridade</label>
+          <ng-select
+            formControlName="prioridade"
+            [searchable]="false"
+            [clearable]="false"
+          >
+            <ng-option [value]="0">Baixa</ng-option>
+            <ng-option [value]="1">Normal</ng-option>
+            <ng-option [value]="2">Alta</ng-option>
+          </ng-select>
+        </div>
+
+        <h2 class="text-primary fw-bold mt-4">Itens da Tarefa</h2>
+
+        <fieldset class="my-4">
+          <div class="form-group position-relative">
+            <label class="form-label">Título do Item</label>
+
+            <div class="d-flex gap-2">
+              <input
+                [formControl]="tituloItemControl!"
+                class="form-control"
+                type="text"
+                placeholder="Digite o título do item"
+              />
+              <button
+                (click)="adicionarItem()"
+                type="button"
+                class="btn btn-outline-primary"
+              >
+                Adicionar
+              </button>
+            </div>
+          </div>
+
+          <table
+            class="table table-light table-striped table-hover table-borderless mt-4"
+          >
+            <thead class="thead-dark text-center">
+              <tr>
+                <th>Título</th>
+                <th>Status de Conclusão</th>
+                <th>Excluir</th>
+              </tr>
+            </thead>
+            <tbody class="text-center">
+              <tr *ngFor="let item of itens.controls; let i = index">
+                <td>{{ item.get("titulo")?.value }}</td>
+                <td>
+                  {{
+                    item.get("concluido")?.value == true
+                      ? "Concluído"
+                      : "Pendente"
+                  }}
+                </td>
+
+                <td class="d-grid d-md-block">
+                  <button
+                    (click)="concluirItem(i)"
+                    [ngbTooltip]="
+                      item.get('concluido')?.value == true
+                        ? 'Reativar'
+                        : 'Concluir'
+                    "
+                    type="button"
+                    class="btn btn-sm btn-outline-primary me-0 me-md-1 mb-1 mb-md-auto"
+                  >
+                    <i
+                      [ngClass]="
+                        item.get('concluido')?.value == true
+                          ? 'bi-bookmark-dash-fill'
+                          : 'bi-bookmark-check-fill'
+                      "
+                      class="bi"
+                    ></i>
+                  </button>
+                  <button
+                    (click)="removerItem(i)"
+                    [ngbTooltip]="
+                      item.get('status')?.value == 2
+                        ? 'Cancelar Remoção'
+                        : 'Remover'
+                    "
+                    type="button"
+                    class="btn btn-sm btn-outline-danger me-0 me-md-1 mb-1 mb-md-auto"
+                  >
+                    <i
+                      [ngClass]="
+                        item.get('status')?.value == 2
+                          ? 'bi-arrow-counterclockwise'
+                          : 'bi-trash'
+                      "
+                      class="bi"
+                    ></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </fieldset>
+
+        <div class="card-footer g-grid d-flex gap-1 mt-5">
+          <button type="submit" class="btn btn-primary px-5">
+            <i class="bi bi-save me-2"></i>
+            Gravar
+          </button>
+          <button
+            routerLink="/tarefas/listar"
+            type="button"
+            class="btn btn-outline-primary px-5"
+          >
+            <i class="pi pi-arrow-left me-2"></i>
+            Voltar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

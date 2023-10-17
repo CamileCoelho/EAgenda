@@ -6,26 +6,30 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { ContatosModule } from './views/contatos/contatos.module'; 
 import { DashboardModule } from './views/dashboard/dashboard.module'; 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RegistroModule } from './views/registro/registro.module';
+import { LoginModule } from './views/login/login.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
+
     NgbModule,
     ToastrModule.forRoot({
       timeOut: 5000,
-      positionClass: 'toast-bottom-center',
+      positionClass: 'toast-top-right',
       preventDuplicates: true,
     }),
-    HttpClientModule,
+
     CoreModule,
+    RegistroModule,
+    LoginModule,
     DashboardModule,
-    ContatosModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
