@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
@@ -10,6 +10,11 @@ import { DashboardModule } from './views/dashboard/dashboard.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistroModule } from './views/registro/registro.module';
 import { LoginModule } from './views/login/login.module';
+import { AuthService } from './core/auth/services/auth.service';
+
+function logarUsuarioSalvoFactory(authService: AuthService) {
+  return () => authService.logarUsuarioSalvo();
+}
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,7 +36,12 @@ import { LoginModule } from './views/login/login.module';
     LoginModule,
     DashboardModule,
   ],
-  providers: [],
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: logarUsuarioSalvoFactory,
+    deps: [AuthService],
+    multi: true,
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

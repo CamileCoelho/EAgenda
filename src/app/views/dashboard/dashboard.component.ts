@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable, Subscription } from 'rxjs';
 import { UsuarioTokenViewModel } from 'src/app/core/auth/models/usuario-token.view-module';
 import { AuthService } from 'src/app/core/auth/services/auth.service';
 
@@ -8,15 +9,11 @@ import { AuthService } from 'src/app/core/auth/services/auth.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit{
-  usuarioVM?: UsuarioTokenViewModel;
+  usuario$?: Observable < UsuarioTokenViewModel | undefined > ;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.authService.obterUsuarioAutenticado().subscribe((res) => {
-      this.usuarioVM = res;
-    });
-
- 
+    this.usuario$ = this.authService.obterUsuarioAutenticado();
   }
 }

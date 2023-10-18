@@ -1,42 +1,43 @@
-<section class="mt-5">
+<section class="mt-5" *ngIf="usuario$ | async as usuario">
   <div class="container">
     <div class="card">
       <div class="row align-items-center gy-3 p-5">
-        <div class="col-12 col-md-7">
-          <h1 class="card-title fw-semibold text-primary">Painel do Usuário</h1>
+        
+        <h1 class="card-title fw-semibold text-primary">Painel do Usuário</h1>
 
-          <h2 class="fw-semibold fs-4">Seja Bem-Vindo(a), {{ usuarioVM?.nome }}.</h2>
-          <section id="info" class="fs-5">
-            <p class="mt-4">
-              O <span class="text-primary fw-semibold">e-Agenda</span> busca
-              agilizar o gerenciamento da rotina diária ao facilitar o acesso e
-              controle de suas tarefas, contatos, compromissos e despesas.
-            </p>
-            <p class="text-primary fw-semibold">O que você deseja gerenciar?</p>
-          </section>
-          <section id="buttons" class="d-grid d-md-flex gap-2">
-            <a class="btn btn-primary" routerLink="/contatos/listar"
-              ><i class="bi bi-people-fill me-2"></i>Contatos</a
-            >
+        <h2 class="fw-semibold fs-4">Seja Bem-Vindo(a), {{ usuario.nome }}.</h2>
 
-            <a class="btn btn-primary" routerLink="/compromissos/listar"
-              ><i class="bi bi-bookmark-check-fill me-2"></i>Compromissos</a
-            >
+        <section id="info" class="fs-5">
 
-            <a class="btn btn-primary" routerLink="/categorias/listar"
-              ><i class="bi bi-bookmark-check-fill me-2"></i>Categorias</a
-            >
+          <p class="mt-4">
+            O <span class="text-primary fw-semibold">e-Agenda</span> busca
+            agilizar o gerenciamento da rotina diária ao facilitar o acesso e
+            controle de suas tarefas, contatos, compromissos e despesas.
+          </p>
+          <p class="text-primary fw-semibold">O que você deseja gerenciar?</p>
 
-            <a class="btn btn-primary" routerLink="/despesas/listar"
-              ><i class="bi bi-bookmark-check-fill me-2"></i>Despesas</a
-            >
-          </section>
-        </div>
+        </section>
 
-        <div class="col-12 col-md-5">
-          <img src="/assets/dashboard-image.svg" class="img-fluid" />
+        <section id="buttons" class="d-grid d-md-flex gap-2">
+
+          <a class="btn btn-primary" routerLink="/contatos/listar">
+          <i class="bi bi-people-fill me-2"></i>Contatos</a>
+
+          <a class="btn btn-primary" routerLink="/compromissos/listar">
+          <i class="bi bi-bookmark-check-fill me-2"></i>Compromissos</a>
+
+          <a class="btn btn-primary" routerLink="/categorias/listar">
+          <i class="bi bi-bookmark-check-fill me-2"></i>Categorias</a>
+
+          <a class="btn btn-primary" routerLink="/despesas/listar">
+          <i class="bi bi-bookmark-check-fill me-2"></i>Despesas</a>
+
+          <a class="btn btn-primary" routerLink="/tarefas/listar">
+          <i class="bi bi-check-circle-fill me-2"></i>Tarefas</a>
+
+        </section>
+
         </div>
       </div>
     </div>
-  </div>
 </section>
