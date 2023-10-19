@@ -1,7 +1,6 @@
-import { Observable, map, find } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { environment } from 'src/environments/environment';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { FormsDespesaViewModel } from '../models/forms-despesa.view-model';
 import { ListarDespesaViewModel } from '../models/listar-despesa.view-model';
 import { VisualizarDespesaViewModel } from '../models/visualizar-despesa.view-model';
@@ -17,7 +16,7 @@ export class DespesasService {
     despesa: FormsDespesaViewModel
   ): Observable<FormsDespesaViewModel> {
     return this.http
-      .post<any>(this.endpoint, despesa, this.obterHeadersAutorizacao())
+      .post<any>(this.endpoint, despesa)
       .pipe(map((res) => res.dados));
   }
 
@@ -26,26 +25,23 @@ export class DespesasService {
     despesa: FormsDespesaViewModel
   ): Observable<FormsDespesaViewModel> {
     return this.http
-      .put<any>(this.endpoint + id, despesa, this.obterHeadersAutorizacao())
+      .put<any>(this.endpoint + id, despesa)
       .pipe(map((res) => res.dados));
   }
 
   public excluir(id: string): Observable<any> {
-    return this.http.delete<any>(
-      this.endpoint + id,
-      this.obterHeadersAutorizacao()
-    );
+    return this.http.delete<any>(this.endpoint + id);
   }
 
   public selecionarTodos(): Observable<ListarDespesaViewModel[]> {
     return this.http
-      .get<any>(this.endpoint, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint)
       .pipe(map((res) => res.dados));
   }
 
   public selecionarPorId(id: string): Observable<FormsDespesaViewModel> {
     return this.http
-      .get<any>(this.endpoint + id, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint + id)
       .pipe(map((res) => res.dados));
   }
 
@@ -53,22 +49,8 @@ export class DespesasService {
     id: string
   ): Observable<VisualizarDespesaViewModel> {
     return this.http
-      .get<any>(
-        this.endpoint + 'visualizacao-completa/' + id,
-        this.obterHeadersAutorizacao()
-      )
+      .get<any>(this.endpoint + 'visualizacao-completa/' + id)
       .pipe(map((res) => res.dados));
-  }
-
-  private obterHeadersAutorizacao() {
-    const token = this.localStorage.obterDadosLocaisSalvos()?.chave;
-
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
   }
   
   // public verificarSeHaCategoria(nome: string) {
@@ -89,7 +71,7 @@ export class DespesasService {
 
   public verificarSeHaCategoria(categoria: string): Observable<boolean> {
     return this.http
-      .get<any>(this.endpoint, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint)
       .pipe(
         map((res) => res.dados),
         map((dados) => {

@@ -1,16 +1,18 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { ToastrModule } from 'ngx-toastr';
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { BrowserModule } from '@angular/platform-browser';
-import { DashboardModule } from './views/dashboard/dashboard.module'; 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { RegistroModule } from './views/registro/registro.module';
 import { LoginModule } from './views/login/login.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AuthService } from './core/auth/services/auth.service';
+import { RegistroModule } from './views/registro/registro.module';
+import { DashboardModule } from './views/dashboard/dashboard.module'; 
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { httpTokenInterceptor } from './core/auth/services/http-token.interceptor';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 function logarUsuarioSalvoFactory(authService: AuthService) {
   return () => authService.logarUsuarioSalvo();
@@ -19,9 +21,9 @@ function logarUsuarioSalvoFactory(authService: AuthService) {
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    MatProgressSpinnerModule,
     BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
     AppRoutingModule,
 
     NgbModule,
@@ -36,12 +38,15 @@ function logarUsuarioSalvoFactory(authService: AuthService) {
     LoginModule,
     DashboardModule,
   ],
-  providers: [{
+  providers: [
+    {
     provide: APP_INITIALIZER,
     useFactory: logarUsuarioSalvoFactory,
     deps: [AuthService],
     multi: true,
-  }],
+    },
+    provideHttpClient(withInterceptors([httpTokenInterceptor])),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

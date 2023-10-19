@@ -1,10 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { FormsCompromissoViewModel } from '../models/forms-compromisso.view-model';
 import { Observable, map } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { FormsCompromissoViewModel } from '../models/forms-compromisso.view-model';
 import { ListarCompromissoViewModel } from '../models/listar-compromisso.view-model';
-import { VisualizarCompromissoViewModel } from '../models/visualizar-compromisso.view-model';
 import { LocalStorageService } from 'src/app/core/auth/services/local-storage.service';
+import { VisualizarCompromissoViewModel } from '../models/visualizar-compromisso.view-model';
 
 @Injectable()
 export class CompromissosService {
@@ -17,7 +17,7 @@ export class CompromissosService {
     compromissso: FormsCompromissoViewModel
   ): Observable<FormsCompromissoViewModel> {
     return this.http
-      .post<any>(this.endpoint, compromissso, this.obterHeadersAutorizacao())
+      .post<any>(this.endpoint, compromissso)
       .pipe(map((res) => res.dados));
   }
 
@@ -26,23 +26,23 @@ export class CompromissosService {
     compromisso: FormsCompromissoViewModel
   ): Observable<FormsCompromissoViewModel> {
     return this.http
-      .put<any>(this.endpoint + id, compromisso, this.obterHeadersAutorizacao())
+      .put<any>(this.endpoint + id, compromisso)
       .pipe(map((res) => res.dados));
   }
 
   public excluir(id: string): Observable<any> {
-    return this.http.delete(this.endpoint + id, this.obterHeadersAutorizacao());
+    return this.http.delete(this.endpoint + id);
   }
 
   public selecionarTodos(): Observable<ListarCompromissoViewModel[]> {
     return this.http
-      .get<any>(this.endpoint, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint)
       .pipe(map((res) => res.dados));
   }
 
   public selecionarPorId(id: string): Observable<FormsCompromissoViewModel> {
     return this.http
-      .get<any>(this.endpoint + id, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint + id)
       .pipe(map((res) => res.dados));
   }
 
@@ -50,21 +50,7 @@ export class CompromissosService {
     id: string
   ): Observable<VisualizarCompromissoViewModel> {
     return this.http
-      .get<any>(
-        this.endpoint + 'visualizacao-completa/' + id,
-        this.obterHeadersAutorizacao()
-      )
+      .get<any>(this.endpoint + 'visualizacao-completa/' + id)
       .pipe(map((res) => res.dados));
-  }
-
-  private obterHeadersAutorizacao() {
-    const token = this.localStorage.obterDadosLocaisSalvos()?.chave;
-
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
   }
 }

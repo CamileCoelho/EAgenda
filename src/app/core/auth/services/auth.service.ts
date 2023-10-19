@@ -1,11 +1,11 @@
-import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { TokenViewModel } from "../models/token.view-module";
+import { LocalStorageService } from "./local-storage.service";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
+import { UsuarioTokenViewModel } from "../models/usuario-token.view-module";
+import { AutenticarUsuarioViewModel } from "../models/autenticar-usuario.view-model";
 import { BehaviorSubject, Observable, catchError, map, tap, throwError } from "rxjs";
 import { RegistrarUsuarioViewModel as RegistrarUsuarioViewModel } from "../models/registrar-usuario.view-module";
-import { LocalStorageService } from "./local-storage.service";
-import { TokenViewModel } from "../models/token.view-module";
-import { AutenticarUsuarioViewModel } from "../models/autenticar-usuario.view-model";
-import { UsuarioTokenViewModel } from "../models/usuario-token.view-module";
 
 @Injectable()
 export class AuthService {
@@ -15,12 +15,10 @@ export class AuthService {
   private endpointLogin: string = this.endpoint + 'autenticar';
   private endpointLogout: string = this.endpoint + 'sair';
 
-  private usuarioAutenticado: BehaviorSubject <
-    UsuarioTokenViewModel | undefined >;
+  private usuarioAutenticado: BehaviorSubject < UsuarioTokenViewModel | undefined >;
 
   constructor(private http: HttpClient, private localStorage: LocalStorageService) {
-    this.usuarioAutenticado = new BehaviorSubject <
-    UsuarioTokenViewModel | undefined > (undefined);
+    this.usuarioAutenticado = new BehaviorSubject < UsuarioTokenViewModel | undefined > (undefined);
   }
 
   public obterUsuarioAutenticado() {
@@ -37,9 +35,7 @@ export class AuthService {
     );
   }
 
-  public login(
-    usuario: AutenticarUsuarioViewModel
-  ): Observable<TokenViewModel> {
+  public login(usuario: AutenticarUsuarioViewModel): Observable<TokenViewModel> {
     return this.http.post<any>(this.endpointLogin, usuario).pipe(
       map((res) => res.dados),
       tap((dados: TokenViewModel) => {
@@ -55,7 +51,7 @@ export class AuthService {
 
   public logout(): Observable<any> {
     return this.http
-      .post<any>(this.endpointLogout, {}, this.obterHeadersAutorizacao())
+      .post<any>(this.endpointLogout, {})
       .pipe(
         tap(() => this.notificarLogout()),
         tap(() => this.localStorage.limparDadosLocais())
@@ -94,14 +90,14 @@ export class AuthService {
     return throwError(() => new Error(mensagemErro));
   }
 
-  private obterHeadersAutorizacao() {
-    const token = this.localStorage.obterDadosLocaisSalvos()?.chave;
+  // private obterHeadersAutorizacao() {
+  //   const token = this.localStorage.obterDadosLocaisSalvos()?.chave;
 
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
-  }
+  //   return {
+  //     headers: new HttpHeaders({
+  //       'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${token}`,
+  //     }),
+  //   };
+  // }
 }

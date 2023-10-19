@@ -17,7 +17,7 @@ export class CategoriasService {
     categoria: FormsCategoriaViewModel
   ): Observable<FormsCategoriaViewModel> {
     return this.http
-      .post<any>(this.endpoint, categoria, this.obterHeadersAutorizacao())
+      .post<any>(this.endpoint, categoria)
       .pipe(map((res) => res.dados));
   }
 
@@ -26,26 +26,23 @@ export class CategoriasService {
     categoria: FormsCategoriaViewModel
   ): Observable<FormsCategoriaViewModel> {
     return this.http
-      .put<any>(this.endpoint + id, categoria, this.obterHeadersAutorizacao())
+      .put<any>(this.endpoint + id, categoria)
       .pipe(map((res) => res.dados));
   }
 
   public excluir(id: string): Observable<any> {
-    return this.http.delete<any>(
-      this.endpoint + id,
-      this.obterHeadersAutorizacao()
-    );
+    return this.http.delete<any>(this.endpoint + id);
   }
 
   public selecionarTodos(): Observable<ListarCategoriaViewModel[]> {
     return this.http
-      .get<any>(this.endpoint, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint)
       .pipe(map((res) => res.dados));
   }
 
   public selecionarPorId(id: string): Observable<FormsCategoriaViewModel> {
     return this.http
-      .get<any>(this.endpoint + id, this.obterHeadersAutorizacao())
+      .get<any>(this.endpoint + id)
       .pipe(map((res) => res.dados));
   }
 
@@ -53,21 +50,7 @@ export class CategoriasService {
     id: string
   ): Observable<VisualizarCategoriaViewModel> {
     return this.http
-      .get<any>(
-        this.endpoint + 'visualizacao-completa/' + id,
-        this.obterHeadersAutorizacao()
-      )
+      .get<any>(this.endpoint + 'visualizacao-completa/' + id)
       .pipe(map((res) => res.dados));
-  }
-
-  private obterHeadersAutorizacao() {
-    const token = this.localStorage.obterDadosLocaisSalvos()?.chave;
-
-    return {
-      headers: new HttpHeaders({
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      }),
-    };
   }
 }

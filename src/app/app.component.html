@@ -1,4 +1,9 @@
 <app-navbar></app-navbar>
-<main>
+
+<div *ngIf="estaCarregando" class="d-grid place h-75 w-100 justify-content-center align-items-center">
+  <mat-spinner color="accent"></mat-spinner>
+</div>
+
+<main *ngIf="!estaCarregando">
   <router-outlet></router-outlet>
 </main>

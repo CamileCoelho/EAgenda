@@ -1,7 +1,7 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, UrlTree, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
+import { inject } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { CanActivateFn, UrlTree, Router } from '@angular/router';
 
 export const authGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
   const router = inject(Router);
@@ -10,12 +10,9 @@ export const authGuard: CanActivateFn = (): Observable<boolean | UrlTree> => {
     .obterUsuarioAutenticado()
     .pipe(
       map((usuario) => {
-        // Nega acesso e redireciona o usuário
         if (!usuario) {
           return router.parseUrl('/login');
         }
-
-        // Permite o usuário a acessar a rota
         return true;
       })
     );
