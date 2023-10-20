@@ -3,7 +3,7 @@
     <div class="row d-flex align-items-center justify-content-center h-100">
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <form [formGroup]="form!" (ngSubmit)="login()">
-          <h1 class="text-primary fw-semibold">Login de Usuário</h1>
+          <h1 class="fw-semibold" [style.color]="'#ff4081'">Login de Usuário</h1>
 
           <div class="form-group my-3 position-relative">
             <label class="form-label" for="email">E-mail</label>
@@ -27,17 +27,15 @@
 
           <div class="form-group my-3">
             Ainda não é um usuário?
-            <a
-              role="button"
-              class="text-primary text-decoration-none"
-              routerLink="/registro"
-              >Clique aqui e cadastre-se!</a
-            >
+            <a role="button"
+               class="text-decoration-none"
+               routerLink="/registro"
+               [style.color]="'#ff4081'">Clique aqui e cadastre-se!</a>
           </div>
 
           <div class="card-footer g-grid d-flex gap-1 mt-4">
-            <button type="submit" class="btn btn-primary px-5">
-              <i class="pi pi-arrow-right me-2"></i>
+            <button type="submit" class="button btn btn-light px-5 rounded-pill" 
+                    [style.background-color]="'#ff4081'" [style.color]="'#ffffff'">
               Entrar
             </button>
           </div>

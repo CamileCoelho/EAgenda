@@ -1,15 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
 import { ContatosService } from '../services/contatos.service';
 import { Router } from '@angular/router';
-import { FormsContatoViewModel } from '../models/forms-contato.view-model';
 import { ToastrService } from 'ngx-toastr';
-import { HttpErrorResponse } from '@angular/common/http';
+import { FormsContatoViewModel } from '../models/forms-contato.view-model';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';          
 
 @Component({
   selector: 'app-inserir-contato',

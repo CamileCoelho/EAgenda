@@ -4,17 +4,13 @@
     <div class="col-12 col-md-10 col-lg-11 mx-auto mt-5">
 
       <div class="text-md-start">
-        <h1 class="fw-bold text-primary">Listar Categorias</h1>
+        <h1 class="fw-bold" [style.color]="'#ff4081'">Listar Categorias</h1>
         <hr />
       </div>
 
-      <div class="d-grid d-md-flex gap-1 mt-5">
-        <a [routerLink]="['/categorias/inserir']"
-          role="button"
-          class="btn btn-primary me-md-1">
-          <i class="bi bi-plus-circle me-2"></i>
-          Nova Categoria
-        </a>
+      <div class="d-grid d-md-flex gap-1 mt-5">        
+        <a class="button" mat-fab extended color="accent" [routerLink]="['/categorias/inserir']">
+          <mat-icon> add </mat-icon>Nova Categoria</a>
       </div>
 
       <div class="row mt-3 g-2">

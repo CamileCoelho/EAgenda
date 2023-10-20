@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import 'src/app/extensions/form-group.extension';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { ContatosService } from './services/contatos.service';
 import { ContatosRoutingModule } from './contatos-routing.module';
 import { CardContatoComponent } from './card-contato/card-contato.component';
@@ -18,7 +20,7 @@ import { ExcluirContatoComponent } from './excluir-contato/excluir-contato.compo
     ExcluirContatoComponent,
     CardContatoComponent,
   ],
-  imports: [ CommonModule, ReactiveFormsModule, ContatosRoutingModule],
+  imports: [ CommonModule, ReactiveFormsModule, ContatosRoutingModule, MatIconModule, MatButtonModule],
   providers: [ContatosService],
 })
 export class ContatosModule {}

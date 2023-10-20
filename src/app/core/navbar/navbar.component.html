@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand fw-semibold" routerLink="/">E-Agenda
-      <i class="bi bi-clipboard2-check-fill text-primary ms-2"></i>
+      <i class="bi bi-clipboard2-check-fill ms-2" [style.color]="'#ff4081'"></i>
     </a>
     <button (click)="estaColapsada = !estaColapsada"
       class="navbar-toggler"
@@ -15,33 +15,38 @@
 
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link text-primary"
+            <a class="nav-link"
                routerLinkActive="fw-semibold"
-               routerLink="/contatos/listar">Contatos</a>
+               routerLink="/contatos/listar"
+               [style.color]="'#ff4081'">Contatos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-primary"
-               routerLinkActive="fw-semibold"
-               routerLink="/compromissos/listar">Compromissos</a>
+            <a class="nav-link"
+               routerLinkActive="fw-bold"
+               routerLink="/compromissos/listar"
+               [style.color]="'#ff4081'">Compromissos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-primary"
+            <a class="nav-link"
                routerLinkActive="fw-semibold"
-               routerLink="/categorias/listar">Categorias</a>
+               routerLink="/categorias/listar"
+               [style.color]="'#ff4081'">Categorias</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-primary"
+            <a class="nav-link"
                routerLinkActive="fw-semibold"
-               routerLink="/despesas/listar">Despesas</a>
+               routerLink="/despesas/listar"
+               [style.color]="'#ff4081'">Despesas</a>
           </li>      
           <li class="nav-item">
-            <a class="nav-link text-primary"
+            <a class="nav-link"
                routerLinkActive="fw-semibold"
-               routerLink="/tarefas/listar">Tarefas</a>
+               routerLink="/tarefas/listar"
+               [style.color]="'#ff4081'">Tarefas</a>
           </li>
 
           <li class="nav-item ms-auto">
-            <button (click)="sair()" class="btn btn-primary px-4">
+            <button (click)="sair()" class="button btn btn-light px-4 rounded-pill" [style.background-color]="'#ff4081'" [style.color]="'#ffffff'">
               <i class="bi bi-door-open me-2"></i>Sair
             </button>
           </li>

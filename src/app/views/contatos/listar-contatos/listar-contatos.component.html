@@ -1,23 +1,18 @@
 <div class="container">
   <div class="row">
-    <!-- Conteúdo principal -->
+ 
     <div class="col-12 col-md-10 col-lg-11 mx-auto mt-5">
-      <!-- Titulo -->
+ 
       <div class="text-md-start">
-        <h1 class="fw-bold text-primary">Listar Contatos</h1>
+        <h1 class="fw-bold" [style.color]="'#ff4081'">Listar Contatos</h1>
         <hr />
       </div>
 
-      <!-- Barra de Ações -->
       <div class="d-grid d-md-flex gap-1 mt-5">
-        <a
-          [routerLink]="['/contatos/inserir']"
-          role="button"
-          class="btn btn-primary me-md-1"
-        >
-          <i class="pi pi-plus-circle me-2"></i>
-          Novo Contato
-        </a>
+            
+        <a class="button" mat-fab extended color="accent" [routerLink]="['/contatos/inserir']">
+          <mat-icon> add </mat-icon>Novo Contato</a>
+          
       </div>
 
       <!-- Listagem de Registros -->

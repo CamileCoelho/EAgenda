@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { ContatosModule } from '../contatos/contatos.module';
 import { CompromissosService } from './services/compromissos.service';
 import { CompromissosRoutingModule } from './compromissos-routing.module';
@@ -12,7 +14,7 @@ import { ExcluirCompromissoComponent } from './excluir-compromisso/excluir-compr
 
 @NgModule({
   declarations: [InserirCompromissoComponent, ListarCompromissosComponent, EditarCompromissoComponent, ExcluirCompromissoComponent],
-  imports: [CommonModule, CompromissosRoutingModule, NgbModule, ReactiveFormsModule, ContatosModule],
+  imports: [CommonModule, CompromissosRoutingModule, NgbModule, ReactiveFormsModule, ContatosModule, MatIconModule, MatButtonModule],
   providers: [CompromissosService],
 })
 export class CompromissosModule {}

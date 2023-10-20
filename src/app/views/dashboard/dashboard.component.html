@@ -3,37 +3,34 @@
     <div class="card">
       <div class="row align-items-center gy-3 p-5">
         
-        <h1 class="card-title fw-semibold text-primary">Painel do Usuário</h1>
+        <h1 class="card-title fw-semibold fs-2" [style.color]="'#ff4081'">Painel do Usuário</h1>
 
-        <h2 class="fw-semibold fs-4">Seja Bem-Vindo(a), {{ usuario.nome }}.</h2>
+        <h2 class="fw-semibold fs-4 my-2">Seja Bem-Vindo(a), {{ usuario.nome }}.</h2>
 
-        <section id="info" class="fs-5">
-
-          <p class="mt-4">
-            O <span class="text-primary fw-semibold">e-Agenda</span> busca
+          <p class="my-2 fs-5">
+            O <span class="" [style.color]="'#ff4081'">e-Agenda</span> busca
             agilizar o gerenciamento da rotina diária ao facilitar o acesso e
             controle de suas tarefas, contatos, compromissos e despesas.
           </p>
-          <p class="text-primary fw-semibold">O que você deseja gerenciar?</p>
+          <p class="my-4 fs-5" [style.color]="'#ff4081'">O que você deseja gerenciar?</p>
 
-        </section>
 
         <section id="buttons" class="d-grid d-md-flex gap-2">
+          
+          <a class="button" mat-fab extended color="accent" routerLink="/contatos/listar">
+            <mat-icon> groups </mat-icon> Contatos</a>
 
-          <a class="btn btn-primary" routerLink="/contatos/listar">
-          <i class="bi bi-people-fill me-2"></i>Contatos</a>
+          <a class="button" mat-fab extended color="accent" routerLink="/compromissos/listar">
+            <mat-icon> event </mat-icon> Compromissos</a>
 
-          <a class="btn btn-primary" routerLink="/compromissos/listar">
-          <i class="bi bi-bookmark-check-fill me-2"></i>Compromissos</a>
+          <a class="button" mat-fab extended color="accent" routerLink="/categorias/listar">
+            <mat-icon> category </mat-icon> Categorias</a>
 
-          <a class="btn btn-primary" routerLink="/categorias/listar">
-          <i class="bi bi-tags-fill me-2"></i>Categorias</a>
+          <a class="button" mat-fab extended color="accent" routerLink="/despesas/listar">
+            <mat-icon> attach_money </mat-icon> Despesas</a>            
 
-          <a class="btn btn-primary" routerLink="/despesas/listar">
-          <i class="bi bi-currency-exchange me-2"></i>Despesas</a>
-
-          <a class="btn btn-primary" routerLink="/tarefas/listar">
-          <i class="bi bi-check-circle-fill me-2"></i>Tarefas</a>
+          <a class="button" mat-fab extended color="accent" routerLink="/tarefas/listar">
+            <mat-icon> add_task </mat-icon> Tarefas</a>
 
         </section>
 

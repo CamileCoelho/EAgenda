@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import 'src/app/extensions/form-group.extension';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 import { DespesasService } from './services/despesas.service';
 import { DespesasRoutingModule } from './despesas-routing.module';
 import { CategoriasModule } from '../categorias/categorias.module';
@@ -13,7 +15,7 @@ import { ExcluirDespesaComponent } from './excluir-despesa/excluir-despesa.compo
 
 @NgModule({
   declarations: [InserirDespesaComponent, ListarDespesasComponent, EditarDespesaComponent, ExcluirDespesaComponent],
-  imports: [ CommonModule, DespesasRoutingModule, ReactiveFormsModule, NgSelectModule, CategoriasModule],
+  imports: [ CommonModule, DespesasRoutingModule, ReactiveFormsModule, NgSelectModule, CategoriasModule, MatIconModule, MatButtonModule],
   providers: [DespesasService],
 })
 export class DespesasModule {}

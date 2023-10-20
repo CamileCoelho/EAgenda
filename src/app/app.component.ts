@@ -1,5 +1,5 @@
+import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { NavigationCancel, NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,9 @@ export class AppComponent implements OnInit {
   title = 'EAgenda';  
   estaCarregando: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private location: Location) {
+    const userLocation = location.path();
+  }
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
